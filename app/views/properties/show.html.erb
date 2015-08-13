@@ -1,0 +1,11 @@
+<H1><%=	@property.address %></H1>
+<H2><%=	@property.price %></H2>
+<p>
+	<strong>Avgift:</strong>
+	<%=	@property.fee %><br>
+	<strong>Pris/m2:</strong>
+	<%=	@property.price_per_sqm %><br>
+	<strong>Antal rum:</strong>
+	<%=	@property.no_of_rooms %><br><br>
+	<%=	link_to("Annonsen på Hemnet", @property.url) %><br>
+</p>

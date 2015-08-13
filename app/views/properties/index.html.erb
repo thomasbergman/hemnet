@@ -1,0 +1,14 @@
+<H1>Alla objekt</H1>
+<table>
+  <tr>
+    <th>Adress</th>
+    <th>Avgift</th>
+  </tr>
+ 
+  <% @properties.each do |p| %>
+    <tr>
+      <td><%= p.address %></td>
+      <td><%= p.fee %></td>
+    </tr>
+  <% end %>
+</table>
