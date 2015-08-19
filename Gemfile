@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.0.0'
+ruby '2.2.2'
 gem 'rails', '4.2.1'
 
 gem 'sass-rails', '~> 5.0'
@@ -12,6 +12,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'rails_12factor', group: :production
 gem 'metainspector'
 gem "paperclip", "~> 4.3"
+gem 'protected_attributes'
 
 group :production do
 	gem 'pg'
