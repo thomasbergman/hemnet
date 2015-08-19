@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+body {
+	font-family: sans-serif;
+}
+
 th {
 	text-align: left;
 }
@@ -10,3 +14,10 @@ td {
 	padding-right: 50px; 
 	text-align: left;
 }
+
+.thumb-image {
+	width: 150px;
+	height: 150px;
+	border-radius: 5em;
+}
+

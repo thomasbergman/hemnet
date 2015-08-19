@@ -13,6 +13,7 @@ class PropertiesController < ApplicationController
 	def create
 		@property = Property.new(property_params)
 		@property.parse_url(property_params[:url])
+		@property.get_image_from_link(property_params[:url])
 		@property.save
 		redirect_to properties_path
 	end
