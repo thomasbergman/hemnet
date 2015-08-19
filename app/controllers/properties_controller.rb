@@ -14,7 +14,14 @@ class PropertiesController < ApplicationController
 		@property = Property.new(property_params)
 		@property.parse_url(property_params[:url])
 		@property.save
-		redirect_to @property
+		redirect_to properties_path
+	end
+
+	def destroy
+		@property = Property.find(params[:id])
+		@property.destroy
+
+		redirect_to properties_path
 	end
 
 private

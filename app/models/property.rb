@@ -13,5 +13,9 @@ require 'nokogiri'
 			self.no_of_rooms = apt_info[2].text
 			self.fee = apt_info[3].text
 			self.price_per_sqm = apt_info[4].text
+		#src  = page.at('gallery-item item-0')['src']
+		#File.open("foo.png", "wb") do |f|
+  	#	f.write(open(src).read)
+		#end
 	end
 end

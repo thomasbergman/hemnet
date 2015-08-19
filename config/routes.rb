@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   
-  root 'properties#new'
+  root 'properties#index'
   resources :properties
 
   # Example of regular route:

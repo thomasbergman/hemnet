@@ -1,14 +1,36 @@
-<H1>Alla objekt</H1>
+<H1>Alla objekt (<%= @properties.count %> st)</H1>
+<%= form_for :property, url: properties_path do |f| %>
+	<p>
+		<%= f.label :url %>
+		<%= f.text_field :url %>
+		<%= button_tag(type: 'submit') do %>
+			Lägg till
+		<% end %>
+	</P>
+<% end %>
+
 <table>
   <tr>
     <th>Adress</th>
+    <th>Pris</th>
+    <th>Boarea</th>
+    <th>Antal rum</th>
+    <th>Pris/kvm</th>
     <th>Avgift</th>
   </tr>
  
   <% @properties.each do |p| %>
     <tr>
       <td><%= p.address %></td>
+      <td><%= p.price %></td>
+      <td><%= p.area %></td>
+      <td><%= p.no_of_rooms %></td>
+      <td><%= p.price_per_sqm %></td>
       <td><%= p.fee %></td>
+      <td><%= link_to 'Ta bort', property_path(p),
+              method: :delete,
+              data: { confirm: 'Säker?' } %></td>
     </tr>
   <% end %>
 </table>
+<br>
