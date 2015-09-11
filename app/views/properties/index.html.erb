@@ -1,7 +1,7 @@
-<H1>Alla objekt (<%= @properties.count %> st)</H1>
+<H1>(<%= @properties.count %> st)</H1>
 <%= form_for :property, url: properties_path do |f| %>
 	<p>
-		<%= f.label :url %>
+		<%= f.label 'url' %>
 		<%= f.text_field :url %>
 		<%= button_tag(type: 'submit') do %>
 			Lägg till
@@ -9,7 +9,7 @@
 	</P>
 <% end %>
 
-<table>
+<table class="main table table-striped sortable">
   <tr>
     <th></th>
     <th>Adress</th>
@@ -24,15 +24,33 @@
     <tr>
     	<td><%= link_to image_tag(p.image.url, :class => "thumb-image"), p.url, :target => "_blank" %></td>
       <td><%= p.address %></td>
-      <td><%= p.price %></td>
-      <td><%= p.area %></td>
-      <td><%= p.no_of_rooms %></td>
-      <td><%= p.price_per_sqm %></td>
-      <td><%= p.fee %></td>
+      <td><%= number_with_delimiter(p.price, delimiter: " ", locale: :sv) %> kr</td>
+      <td><%= p.area %> kvm</td>
+      <td><%= p.no_of_rooms %> rum</td>
+      <td><%= number_with_delimiter(p.price_per_sqm, delimiter: " ", locale: :sv) %> kr/kvm</td>
+      <td><%= number_with_delimiter(p.fee, delimiter: " ", locale: :sv) %> kr/mån</td>
       <td><%= link_to 'Ta bort', property_path(p),
               method: :delete,
               data: { confirm: 'Säker?' } %></td>
     </tr>
   <% end %>
 </table>
-<br>
+<div class="col-md-12 col-sm-12">
+<% @properties.each do |p| %>
+      <div class="panel panel-default">
+        <div class="panel-body">
+              <div class="well well-sm">
+                <div class="media">
+                    <a class="">
+                        <%= link_to image_tag(p.image.url, :class => "thumb-image"), p.url, :target => "_blank" %>
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading"><%= p.address %></h4>
+                    <p><span class="label label-info"><%= number_with_delimiter(p.price, delimiter: " ", locale: :sv) %> kr</span></p>
+
+                    </div>
+                </div>
+               </div>
+            </div>
+         </div> 
+<% end %>

@@ -13,6 +13,9 @@ gem 'rails_12factor', group: :production
 gem 'metainspector'
 gem "paperclip", "~> 4.3"
 gem 'protected_attributes'
+gem 'jquery-turbolinks'
+gem 'bootstrap-sass'
+gem 'autoprefixer-rails'
 
 group :production do
 	gem 'pg'
