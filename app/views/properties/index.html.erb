@@ -18,25 +18,28 @@
     <th>Antal rum</th>
     <th>Pris/kvm</th>
     <th>Avgift</th>
+    <th>Visning</th>
   </tr>
  
-  <!--
+  
   <% @properties.each do |p| %>
     <tr>
     	<td><%= link_to image_tag(p.image.url, :class => "thumb-image"), p.url, :target => "_blank" %></td>
-      <td><%= p.address %></td>
+      <td><h1><%= p.address %></td></h1>
       <td><%= number_with_delimiter(p.price, delimiter: " ", locale: :sv) %> kr</td>
       <td><%= p.area %> kvm</td>
       <td><%= p.no_of_rooms %> rum</td>
       <td><%= number_with_delimiter(p.price_per_sqm, delimiter: " ", locale: :sv) %> kr/kvm</td>
       <td><%= number_with_delimiter(p.fee, delimiter: " ", locale: :sv) %> kr/mån</td>
+      <td><%= p.showtime %></td>
       <td><%= link_to 'Ta bort', property_path(p),
               method: :delete,
               data: { confirm: 'Säker?' } %></td>
     </tr>
   <% end %>
-</table> -->
+</table> 
 
+<!--
 <div class="col-md-12 col-sm-12">
 <% @properties.each do |p| %>
       <div class="panel panel-default">
@@ -55,4 +58,4 @@
                </div>
             </div>
          </div> 
-<% end %>
+<% end %> -->
