@@ -17,9 +17,29 @@ validates_attachment_content_type :image, :content_type => ["image/jpg", "image/
 			self.fee = apt_info[3].text.gsub(/[^\d]/, '')
 			self.price_per_sqm = apt_info[4].text.gsub(/[^\d]/, '')
 
-    date_details = page.xpath('.//time')[0].attributes()
-    date_string = date_details['datetime'].value()
-    self.showtime = DateTime.parse(date_string) + 2.hours #creates a time object + adjusts from UTC to CET +2h
+      #Parse showtime dates and time
+      date_details1 = page.xpath('.//time')[0].attributes()
+      date_string1 = date_details1['datetime'].value()
+      self.showtime1 = DateTime.parse(date_string1) + 2.hours #creates a time object + adjusts from UTC to CET +2h
+      self.showtime1_start = page.xpath('.//time')[0].inner_text.strip()[-11..-7].to_time + 2.hours
+      self.showtime1_end = page.xpath('.//time')[0].inner_text.strip.last(5).to_time + 2.hours
+      self.showtime1_duration = TimeDifference.between(self.showtime1_start, self.showtime1_end).in_minutes
+
+      date_details2 = page.xpath('.//time')[1].attributes()
+      date_string2 = date_details2['datetime'].value()
+      self.showtime2 = DateTime.parse(date_string2) + 2.hours #creates a time object + adjusts from UTC to CET +2h
+      self.showtime2_start = page.xpath('.//time')[1].inner_text.strip()[-11..-7].to_time + 2.hours
+      self.showtime2_end = page.xpath('.//time')[1].inner_text.strip.last(5).to_time + 2.hours
+      self.showtime2_duration = TimeDifference.between(self.showtime2_start, self.showtime2_end).in_minutes
+      
+
+
+      
+
+
+      date_details2 = page.xpath('.//time')[1].attributes()
+      date_string2 = date_details2['datetime'].value()
+      self.showtime2 = DateTime.parse(date_string2) + 2.hours #creates a time object + adjusts from UTC to CET +2h
   end
   
   def get_image_from_link(url)

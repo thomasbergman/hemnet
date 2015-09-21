@@ -1,12 +1,11 @@
-<H1>(<%= @properties.count %> st)</H1>
+<div id="wrapper">
 <%= form_for :property, url: properties_path do |f| %>
-	<p>
-		<%= f.label 'url' %>
-		<%= f.text_field :url %>
+	<div id="url-input">
+		<%= f.text_field :url, :placeholder => "Klistra in en Hemnet-länk här!" %>
 		<%= button_tag(type: 'submit') do %>
 			Lägg till
 		<% end %>
-	</P>
+	</div>
 <% end %>
 
 <table class="main table table-striped sortable">
@@ -18,7 +17,15 @@
     <th>Antal rum</th>
     <th>Pris/kvm</th>
     <th>Avgift</th>
-    <th>Visning</th>
+    <th>Visning 1</th>
+    <th>Starttid</th>
+    <th>Sluttid</th>
+    <th>Längd</th>
+    <th>Visning 2</th>
+    <th>Starttid</th>
+    <th>Sluttid</th>
+    <th>Längd</th>
+
   </tr>
  
   
@@ -31,13 +38,21 @@
       <td><%= p.no_of_rooms %> rum</td>
       <td><%= number_with_delimiter(p.price_per_sqm, delimiter: " ", locale: :sv) %> kr/kvm</td>
       <td><%= number_with_delimiter(p.fee, delimiter: " ", locale: :sv) %> kr/mån</td>
-      <td><%= p.showtime %></td>
+      <td><%= p.showtime1.strftime('%d %B').downcase %></td>
+      <td><%= p.showtime1_start.strftime('%H:%M') %></td>
+      <td><%= p.showtime1_end.strftime('%H:%M') %></td>
+      <td><%= p.showtime1_duration %> min</td>
+      <td><%= p.showtime2.strftime('%d %B').downcase %></td>
+      <td><%= p.showtime2_start.strftime('%H:%M') %></td>
+      <td><%= p.showtime2_end.strftime('%H:%M') %></td>
+      <td><%= p.showtime2_duration %> min</td>   
       <td><%= link_to 'Ta bort', property_path(p),
-              method: :delete,
-              data: { confirm: 'Säker?' } %></td>
+              method: :delete %></td> <!-- data: { confirm: 'Säker?' } -->
     </tr>
   <% end %>
 </table> 
+(<%= @properties.count %> st)
+</div>
 
 <!--
 <div class="col-md-12 col-sm-12">

@@ -16,6 +16,7 @@ gem 'protected_attributes'
 gem 'jquery-turbolinks'
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
+gem 'time_difference', '~> 0.4.2'
 
 group :production do
 	gem 'pg'

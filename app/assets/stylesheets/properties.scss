@@ -28,8 +28,17 @@ table main a {
 	
 }
 
-h1 {
-	font-size: 5em;
-	font-weight: 400;
+td h1 {
+	font-size: 2em;
+	font-weight: 300;
+	font-family: helvetica;
 }
 
+#property_url {
+	width: 90%;
+	margin: 10px 10px 0 0;
+}
+
+#wrapper {
+	margin-left: 10px;
+}
